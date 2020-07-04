@@ -1,0 +1,833 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*definindo propriedades gerais  */
+body {
+  background: #e6ecf8;
+  font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+  /*melhoram a resolução das fontes*/
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+input, button {
+  outline: 0;
+}
+
+.content {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+header#main-header {
+  background-color: white;
+  height: 46px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  /*para deixar esse elemento sobreponto o elemento abaixo dele
+  usar o position: relative e o z-index > 0  */
+  position: relative;
+  z-index: 1;
+}
+
+header#main-header .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+header#main-header nav ul {
+    list-style: none;
+    display: flex;
+    
+    
+}
+
+header#main-header nav ul li{
+  display: flex;
+  align-items: center;
+  padding: 15px;
+
+  font-size: 13px;
+  color: #667580;
+  font-weight: bold;
+}
+
+header#main-header nav ul li img {
+  margin-right: 7px;
+}
+
+header#main-header div#main-header-search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header#main-header div#main-header-search input {
+  width: 220px;
+  padding: 0 30px 0 12px;
+  border-radius: 16px;
+  height: 34px;
+  border: 1px solid #E6ECF0;
+  color: #667581;
+  font-size: 12px;
+  /*colocando uma imagem de fundo e especificando ao mesmo tempo 
+  a cor do fundo, a imagem, não repetir a imagem
+  localização na largura onde a imagem ficará e alinhamento vertical  */
+  background: #F5F8FA url("/assets/search.svg") no-repeat 190px center;
+}
+
+header#main-header div#main-header-search img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  margin: 0 15px;
+}
+
+header#main-header div#main-header-search button {
+  width: 90px;
+  height: 34px;
+  border-radius: 16px;
+  background-color: #3bb9e3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+  font-size: 14px;
+  color: #fff;
+  border: 0;
+
+}
+
+header#mobile-header {
+  display: none;
+  background-color: white;
+  height: 46px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  /*para deixar esse elemento sobreponto o elemento abaixo dele
+  usar o position: relative e o z-index > 0  */
+  position: relative;
+  z-index: 1;
+}
+
+header#mobile-header .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+header#mobile-header nav ul {
+    list-style: none;
+    display: flex;
+    
+}
+
+header#mobile-header nav ul li{
+  display: flex;
+  align-items: center;
+  padding: 15px;
+
+  font-size: 13px;
+  color: #667580;
+  font-weight: bold;
+}
+
+header#mobile-header nav ul li img {
+  margin-right: 7px;
+}
+
+header#mobile-header div#mobile-header-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+header#mobile-header div#mobile-header-avatar img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  margin: 0 15px;
+}
+
+header#mobile-header div#mobile-header-avatar button {
+  width: 70px;
+  height: 34px;
+  border-radius: 16px;
+  background-color: #3bb9e3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+  font-size: 14px;
+  color: #fff;
+  border: 0;
+
+}
+
+
+div#bunner {
+  width: 100%;
+  height: 380px;
+  background: #3bb9e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div#bunner h1 {
+  color: white;
+
+}
+
+div#information-bar {
+  background-color: white;
+  height: 59px;
+  /*a box-shadow irá se posicionar 0 px oara a direita horizontalmente
+  1 px verticalmente e 3 pixels de sombra  */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+ 
+  
+}
+
+div#information-bar .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  /*dando um espaço na esquerda para acompanhar a side-bar */
+  padding-left: 300px;
+}
+
+div#information-bar .content ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  height: 100%;
+}
+
+div#information-bar .content ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  height: 100%;
+  position: relative; /* para permitir o uso do position absolute no after
+  abaixo */
+}
+
+/*usando o afto é possivel incluir um novo elemento antes do fechamento
+do elemento onde ele foi colocado */
+div#information-bar .content ul li.active::after {
+  content: '';
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #3bb9e3;
+}
+
+div#information-bar ul li span {
+  color: #667580;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+div#information-bar ul li strong {
+  color: #667580;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+div#information-bar ul li.active strong {
+  color: #3bb9e3;
+}
+
+div#information-bar div#actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div#information-bar div#actions button {
+  width: 90px;
+  height: 34px;
+  border-radius: 16px;
+  
+  font-weight: bold;
+  font-size: 14px;
+  color: #3bb9e3;
+  border: solid 1px #3bb9e3;
+}
+
+div#information-bar div#actions button:hover {
+  background-color: #3bb9e3;
+  color: white;
+}
+
+div#information-bar div#actions img {
+  margin-left: 20px;
+}
+
+div.wrapper-content {
+  width: 100%;
+  height: 100%;
+  
+
+  display: flex;
+  justify-content: space-between;
+}
+
+
+div.wrapper-content aside.profile {
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+
+div.wrapper-content aside.profile > img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-top: -130px;
+
+  border: solid 5px white;
+}
+
+div.wrapper-content aside.profile h1 {
+  font-size: 21px;
+  color: #1f2226;
+  margin-top: 10px;
+}
+
+div.wrapper-content aside.profile > span {
+  font-size: 14px;
+  color: #667580;
+  margin-bottom: 10px;
+}
+
+div.wrapper-content aside.profile > p {
+  font-size: 14px;
+  margin-top: 15px;
+  color: #1f2226;
+}
+
+div.wrapper-content aside.profile ul.profile-details  {
+  margin-top: 20px;
+  list-style: none;
+}
+
+div.wrapper-content aside.profile  ul.profile-details  li {
+  font-size: 14px;
+  color: #667580;
+  margin: 5px 0;
+
+  display: flex;
+  align-items: center;
+}
+
+div.wrapper-content aside.profile  ul.profile-details li a {
+  margin-left: 8px;
+  text-decoration: none;
+  color: #667580;
+}
+
+div.wrapper-content aside.profile  ul.profile-details li a:hover {
+  color: #3bb9e3;
+}
+
+
+div.wrapper-content aside.profile .widget {
+  margin-top: 20px;
+}
+
+div.wrapper-content aside.profile .widget strong {
+  font-weight: normal;
+  color: #3bb9e3;
+  font-size: 14px;
+
+  display: flex;
+  align-items: center;
+}
+
+div.wrapper-content aside.profile .widget strong img {
+  margin-right: 5px;
+}
+
+div.wrapper-content aside.profile .followers ul {
+  list-style: none;
+  margin-top: 20px;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.wrapper-content aside.profile .followers ul li {
+  width: 45px;
+  height: 45px;
+  background: #d0d5d9;
+  border-radius: 50%;
+    /* flex: 1 0 auto;essa prop substitui o shrint grow e flex-basis  */
+  margin: 3px;
+}
+
+div.wrapper-content aside.profile .images ul {
+  list-style: none;
+  margin-top: 20px;
+  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.wrapper-content aside.profile .images ul li {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  background: #d0d5d9;
+  margin: 3px;
+}
+
+div.wrapper-content section.timeline {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 530px;
+  background: #fff;
+  margin: 10px;
+  padding-left: 10px;
+}
+
+div.wrapper-content section.timeline nav {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  border-bottom: 1px solid #E6ECF0;
+}
+
+div.wrapper-content section.timeline nav a {
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #3bb9e3;
+}
+
+div.wrapper-content section.timeline nav a:first-child {
+  margin: 0;
+}
+
+div.wrapper-content section.timeline nav a.active {
+  color: #1f2226;
+}
+
+div.wrapper-content section.timeline ul.tweets {
+  list-style: none;
+}
+
+div.wrapper-content section.timeline ul.tweets li {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #E6ECF0;
+}
+
+div.wrapper-content section.timeline ul.tweets li img#tweet-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+div.wrapper-content section.timeline ul.tweets li div.tweet-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+div.wrapper-content section.timeline ul.tweets li div.tweet-content strong {
+  font-size: 14px;
+  color: #1f2226;
+}
+
+div.wrapper-content section.timeline ul.tweets li div.tweet-content strong span {
+  font-weight: normal;
+  color: #d0d5d9;
+  font-size: 13px;
+}
+
+div.wrapper-content section.timeline ul.tweets li div.tweet-content p {
+  margin-top: 5px;
+  color: #1f2226;
+  font-size: 14px;
+}
+
+div.wrapper-content section.timeline ul.tweets li div.tweet-content div.actions {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  
+}
+
+div.wrapper-content section.timeline ul.tweets li div.tweet-content div.actions a {
+  text-decoration: none;
+  color: #667580;
+  font-weight: bold;
+  font-size: 12px;
+  margin-right: 50px;
+
+  display: flex;
+  align-items: center;
+}
+
+div.wrapper-content section.timeline ul.tweets li div.tweet-content div.actions a img{
+  margin-right: 10px;
+}
+
+div.wrapper-content aside.widgets {
+  max-width: 300px;
+  margin-top: 10px;
+}
+
+div.wrapper-content aside.widgets .widget {
+  background: #fff;
+  padding: 15px;
+}
+
+div.wrapper-content aside.widgets .widget .title {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: baseline;  /* alinha o texto na mesma linha */
+}
+
+div.wrapper-content aside.widgets .widget .title div.title-options {
+  display: flex;
+}
+
+div.wrapper-content aside.widgets .widget .title strong {
+  font-size: 16px;
+  color: #1f2226;
+  margin-right: 5px;
+ }
+
+ div.wrapper-content aside.widgets .widget .title a {
+   color: #3bb9e3;
+   font-size: 11px;
+   text-decoration: none;
+   position: relative;
+   padding-left: 10px;
+ }
+
+ div.wrapper-content aside.widgets .widget .title a::before {
+   content:'';
+   width: 2px;
+   height: 2px;
+   border-radius: 50%;
+   background: #3bb9e3;
+   position: absolute;
+   left: 4px;
+   top: 6px;
+   
+ }
+
+ div.wrapper-content aside.widgets .widget .title a:hover {
+   color: #1f2226;
+ }
+
+ div.wrapper-content aside.widgets .follow ul {
+   list-style: none;
+ }
+
+ div.wrapper-content aside.widgets .follow ul li {
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 5px;
+   position: relative;
+   
+ }
+
+ div.wrapper-content aside.widgets .follow ul li::after {
+  content: '';
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #d0d5d9;
+  
+ }
+
+ div.wrapper-content aside.widgets .follow ul li div.profile {
+   display: flex;
+   margin-bottom: 10px;;
+ }
+
+ div.wrapper-content aside.widgets .follow ul li div.profile img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 10px;
+ }
+
+ div.wrapper-content aside.widgets .follow ul li div.profile div.info {
+   display: flex;
+   flex-direction: column;
+ }
+
+ div.wrapper-content aside.widgets .follow ul li div.profile div.info span {
+   font-size: 14px;
+   color: #667580;
+   margin-bottom: 5px;;
+ }
+
+ div.wrapper-content aside.widgets .follow ul li div.profile div.info span strong {
+   color: #1f2226;
+   font-weight: bold;
+ }
+
+ div.wrapper-content aside.widgets .follow ul li div.profile div.info button {
+  width: 90px;
+  height: 27px;
+  border-radius: 16px;
+  
+  font-weight: bold;
+  font-size: 12px;
+  color: #3bb9e3;
+  border: solid 1px #3bb9e3;
+ }
+
+ 
+ div.wrapper-content aside.widgets .follow ul li div.profile div.info button:hover {
+   background:  #3bb9e3;
+   color: #fff;
+ }
+
+ div.wrapper-content aside.widgets .follow ul li > a{
+   font-size: 12px;
+   text-decoration: none;
+   color: #d0d5d9;
+ }
+
+ div.wrapper-content aside.widgets .follow span#find-friends {
+   font-size: 12px;
+   color: #3bb9e3;
+ }
+
+ div.wrapper-content aside.widgets .follow span img {
+   color: #3bb9e3;
+   width: 12px;
+   height: 12px;
+   margin-top: 10px;
+ }
+
+ div.wrapper-content aside.widgets .trends {
+   margin-top: 10px;
+ }
+
+ div.wrapper-content aside.widgets .trends ul {
+   list-style: none;
+ }
+
+ div.wrapper-content aside.widgets .trends ul li {
+   margin-bottom: 5px;
+   color: #3bb9e3;
+   font-size: 14px;
+ }
+
+ @media (max-width: 1040px) {
+  div.wrapper-content aside.widgets .widget .title {
+    flex-direction: column;
+  }
+
+  div.wrapper-content aside.widgets .widget .title div.title-options {
+    margin-top: 5px;
+  }
+
+ }
+
+ @media (max-width: 900px) {
+  header#mobile-header {
+    display: flex;
+  }
+
+  header#main-header {
+    display: none;
+  }
+
+  div#bunner {
+    display: none !important;
+  }
+
+  aside.profile {
+    display: none !important;
+  }
+
+  
+
+  div#information-bar .content { 
+    padding-left: 35px;
+  }
+
+  div#information-bar ul li span {
+    font-size: 11px;
+  }
+  
+  div#information-bar ul li strong {
+    font-size: 12px;
+   
+  }
+
+  div#information-bar div#actions button {
+    width: 70px;
+    height: 34px;
+    font-size: 11px;
+  }
+  
+  .content {
+    padding: 0 10px;
+  }
+
+  div.wrapper-content section.timeline nav a {
+    font-size: 14px;
+    margin-right: 5px;
+  }
+
+  div.wrapper-content aside.widgets {
+    width: 300px;
+  }
+
+ }
+
+ @media (max-width: 767px) {
+
+  .content {
+    padding: 0 5px;
+  }
+  
+  aside.widgets {
+    display: none !important;
+  }
+
+  div.wrapper-content section.timeline {
+    max-width: 350px;
+  }
+
+  div.wrapper-content section.timeline ul.tweets li div.tweet-content {
+    width: 250px;
+  }
+
+  div.wrapper-content section.timeline ul.tweets li div.tweet-content p {
+    font-size: 12px;
+  }
+
+  div.wrapper-content section.timeline ul.tweets li div.tweet-content div.actions a {
+    font-size: 10px;
+    margin-right: 20px;
+  }
+  
+  div.wrapper-content section.timeline ul.tweets li div.tweet-content div.actions a img{
+    margin-right: 10px;
+  }
+
+  div.wrapper-content section.timeline ul.tweets li img#tweet-avatar {
+    width: 35px;
+    height: 35px;
+  }
+
+  div.wrapper-content section.timeline ul.tweets li {
+    padding: 0;
+    margin-right: 3px;
+  }
+
+  
+
+  div#information-bar .content { 
+    padding: 0 15px;
+  }
+
+  
+  div#information-bar .content ul li {
+    padding: 0 5px;
+  }
+
+  div#information-bar ul li span {
+    font-size: 10px;
+  }
+  
+  div#information-bar ul li strong {
+    font-size: 12px;
+   
+  }
+
+
+
+  div#information-bar div#actions img {
+    display: none;
+  }
+
+  
+ }
+
+ @media (max-width: 600px) {
+
+  div.wrapper-content section.timeline {
+    max-width: 600px;
+  }
+
+  div.wrapper-content section.timeline ul.tweets li div.tweet-content {
+    width: 500px;
+    width: 100%
+  }
+  
+ }
+
+ @media (max-width: 349px) {
+
+
+  div.wrapper-content section.timeline {
+    max-width: 300px;
+  }
+
+  div.wrapper-content section.timeline ul.tweets li {
+    margin-top: 5px;
+  }
+
+  div.wrapper-content section.timeline ul.tweets li div.tweet-content {
+    width: 180px;
+    width: 100%
+  }
+
+  div.wrapper-content section.timeline nav a {
+    font-size: 12px;
+    margin-right: 3px;
+  }
+
+  div.wrapper-content section.timeline ul.tweets li div.tweet-content strong {
+    font-size: 12px;
+    color: #1f2226;
+  }
+  
+  div.wrapper-content section.timeline ul.tweets li div.tweet-content strong span {
+    font-weight: normal;
+    color: #d0d5d9;
+    font-size: 11px;
+  }
+
+  
+ }
+
